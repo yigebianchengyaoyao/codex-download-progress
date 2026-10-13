@@ -1,6 +1,7 @@
 {
   "project": "Codex Download Progress plugin",
   "updated_at": "2026-10-13",
+  "published_repository": "https://github.com/yigebianchengyaoyao/codex-download-progress",
   "goal": "Let Codex download a file from a URL and keep the user informed with live progress during that plugin-managed download.",
   "requirements": [
     "Provide a Codex-compatible plugin package stored on E:.",
@@ -21,7 +22,7 @@
     "Progress percentage and ETA require a known content length; otherwise only downloaded bytes and speed are available.",
     "Public plugin directory publication may require a hosted HTTPS MCP server and review; this build targets local Codex use first."
   ],
-  "status": "implemented, locally installed, and prepared for public GitHub release; plugin validator, MCP handshake, tool listing, 1 MiB local HTTP download, and Unicode destination checks passed",
+  "status": "implemented, installed locally, and pushed to a public GitHub repository; plugin validator, MCP handshake, tool listing, 1 MiB local HTTP download, and Unicode destination checks passed",
   "success_criteria": [
     "Plugin package passes the Codex plugin validator.",
     "MCP server responds to initialize, tools/list, and both tool calls.",
