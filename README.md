@@ -15,11 +15,13 @@ The plugin tracks only downloads started through its own `start_download` tool. 
 
 ## Install in Codex
 
-This repository includes a local marketplace at `.agents/plugins/marketplace.json`.
+This repository includes a Codex marketplace at `.agents/plugins/marketplace.json`.
 
-1. Add this repository as a local marketplace from Codex's plugin directory, or run `codex plugin marketplace add <path-to-repository>`.
-2. Choose **Download Progress** and install it.
+1. Add the GitHub marketplace with `codex plugin marketplace add yigebianchengyaoyao/codex-download-progress` (or add the cloned repository path).
+2. Install it with `codex plugin add download-progress@download-progress-community`.
 3. Start a new Codex conversation if the tools are not yet available.
+
+Repository: <https://github.com/yigebianchengyaoyao/codex-download-progress>
 
 The local MCP server starts with Python 3.10 or newer. If your system uses `py` instead of `python`, change the `command` in `plugins/download-progress/.mcp.json` to `py` and add `-3` before the script path.
 

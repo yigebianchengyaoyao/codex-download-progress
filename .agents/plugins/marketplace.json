@@ -1,7 +1,7 @@
 {
-  "name": "personal",
+  "name": "download-progress-community",
   "interface": {
-    "displayName": "Personal"
+    "displayName": "Download Progress Community"
   },
   "plugins": [
     {

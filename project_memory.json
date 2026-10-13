@@ -21,7 +21,7 @@
     "Progress percentage and ETA require a known content length; otherwise only downloaded bytes and speed are available.",
     "Public plugin directory publication may require a hosted HTTPS MCP server and review; this build targets local Codex use first."
   ],
-  "status": "implemented and installed in Codex local marketplace; plugin validator, MCP handshake, tool listing, 1 MiB local HTTP download, and Unicode destination checks passed",
+  "status": "implemented, locally installed, and prepared for public GitHub release; plugin validator, MCP handshake, tool listing, 1 MiB local HTTP download, and Unicode destination checks passed",
   "success_criteria": [
     "Plugin package passes the Codex plugin validator.",
     "MCP server responds to initialize, tools/list, and both tool calls.",
