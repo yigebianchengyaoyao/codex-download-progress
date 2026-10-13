@@ -1,0 +1,30 @@
+{
+  "project": "Codex Download Progress plugin",
+  "updated_at": "2026-10-13",
+  "goal": "Let Codex download a file from a URL and keep the user informed with live progress during that plugin-managed download.",
+  "requirements": [
+    "Provide a Codex-compatible plugin package stored on E:.",
+    "Start a download without blocking progress queries.",
+    "Return downloaded bytes, total bytes, percentage when known, speed, ETA when available, status, and destination.",
+    "Support resuming retained partial files when the server accepts HTTP Range requests.",
+    "Default to a downloads folder in the current workspace and allow a chosen output path.",
+    "Do not overwrite existing destination files.",
+    "Keep the implementation dependency-free using Python standard library."
+  ],
+  "features": [
+    "MCP tools: start_download and get_download_progress.",
+    "Codex skill to poll progress and post concise conversation updates.",
+    "Partial-file resume and final atomic rename."
+  ],
+  "known_limitations": [
+    "The plugin can track only transfers started through its own MCP tool, not downloads performed by other tools, package managers, or the operating system.",
+    "Progress percentage and ETA require a known content length; otherwise only downloaded bytes and speed are available.",
+    "Public plugin directory publication may require a hosted HTTPS MCP server and review; this build targets local Codex use first."
+  ],
+  "status": "implemented and installed in Codex local marketplace; plugin validator, MCP handshake, tool listing, 1 MiB local HTTP download, and Unicode destination checks passed",
+  "success_criteria": [
+    "Plugin package passes the Codex plugin validator.",
+    "MCP server responds to initialize, tools/list, and both tool calls.",
+    "Local marketplace can load the plugin in Codex."
+  ]
+}

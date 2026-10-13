@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "download_progress": {
+      "command": "python",
+      "args": ["scripts/server.py"],
+      "cwd": ".",
+      "enabled": true,
+      "startup_timeout_sec": 10,
+      "tool_timeout_sec": 3600,
+      "default_tools_approval_mode": "prompt",
+      "tools": {
+        "start_download": {"approval_mode": "prompt"},
+        "get_download_progress": {"approval_mode": "approve"}
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "download-progress",
+  "version": "0.1.0+codex.20261013045938",
+  "description": "Download files from URLs with resumable downloads and progress updates available to Codex during the task.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Download Progress",
+    "shortDescription": "Download files and track progress in Codex.",
+    "longDescription": "Start URL downloads, check live byte and percentage progress, resume partial files, and save to a chosen folder.",
+    "developerName": "Download Progress community plugin",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Download this URL with progress updates: <URL>"
+  },
+  "mcpServers": "./.mcp.json"
+}
