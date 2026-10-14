@@ -3,6 +3,7 @@
   "updated_at": "2026-10-14",
   "version": "0.2.0",
   "development_branch": "fix/download-reliability",
+  "pull_request": "https://github.com/yigebianchengyaoyao/codex-download-progress/pull/1",
   "published_repository": "https://github.com/yigebianchengyaoyao/codex-download-progress",
   "goal": "Let Codex download a file from a URL and keep the user informed with live progress during that plugin-managed download.",
   "requirements": [
@@ -32,7 +33,7 @@
     "POSIX final publication requires hard links and has not been run on a real macOS/Linux host.",
     "No automatic retries or persistent queue; multi-GB endurance and real customer willingness to pay remain unverified."
   ],
-  "status": "0.2.0 installed locally through Codex CLI; duplicate legacy registration removed; 28 Windows regression tests and skill validation passed; GitHub fix-branch publication pending",
+  "status": "0.2.0 installed locally; duplicate legacy registration removed; 28 Windows regression tests, installed-source comparison, 2 MiB installed-MCP download, skill/format/ZIP checks passed; GitHub fix branch pushed and PR 1 open, main remains 0.1.0 until merge",
   "validation": {
     "regression_tests": 28,
     "largest_fixture_bytes": 33554432,
