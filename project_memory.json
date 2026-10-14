@@ -1,31 +1,49 @@
 {
   "project": "Codex Download Progress plugin",
-  "updated_at": "2026-10-13",
+  "updated_at": "2026-10-14",
+  "version": "0.2.0",
+  "development_branch": "fix/download-reliability",
   "published_repository": "https://github.com/yigebianchengyaoyao/codex-download-progress",
   "goal": "Let Codex download a file from a URL and keep the user informed with live progress during that plugin-managed download.",
   "requirements": [
     "Provide a Codex-compatible plugin package stored on E:.",
     "Start a download without blocking progress queries.",
     "Return downloaded bytes, total bytes, percentage when known, speed, ETA when available, status, and destination.",
-    "Support resuming retained partial files when the server accepts HTTP Range requests.",
-    "Default to a downloads folder in the current workspace and allow a chosen output path.",
+    "Resume only after validating the same URL fingerprint, strong ETag, and correct Content-Range.",
+    "The skill defaults to an absolute downloads folder in the real user workspace; the tool never guesses the workspace from its own cwd.",
     "Do not overwrite existing destination files.",
-    "Keep the implementation dependency-free using Python standard library."
+    "Keep runtime dependencies limited to Python standard library.",
+    "Support cancellation, optional expected SHA-256, bounded concurrency, and no overwrite at final publication.",
+    "Assess practical product value, distribution, and small-scale monetization honestly."
   ],
   "features": [
-    "MCP tools: start_download and get_download_progress.",
-    "Codex skill to poll progress and post concise conversation updates.",
-    "Partial-file resume and final atomic rename."
+    "MCP tools: start_download, get_download_progress, cancel_download, list_downloads.",
+    "Waited polling and concise conversation updates without unchanged-status spam.",
+    "Strong ETag resume, cross-process destination locks, and no-overwrite publication.",
+    "Optional SHA-256 validation, terminal failure states, frozen terminal speed, and redacted URL queries.",
+    "Four active transfers and 100 session-local history entries."
   ],
   "known_limitations": [
     "The plugin can track only transfers started through its own MCP tool, not downloads performed by other tools, package managers, or the operating system.",
     "Progress percentage and ETA require a known content length; otherwise only downloaded bytes and speed are available.",
-    "Public plugin directory publication may require a hosted HTTPS MCP server and review; this build targets local Codex use first."
+    "Public plugin directory publication may require a hosted HTTPS MCP server and review; this build targets local Codex use first.",
+    "Task IDs and history do not survive a server restart; retained partial files can be recovered by resubmitting the URL and destination.",
+    "Cancellation is cooperative; a blocked network read can delay confirmation.",
+    "POSIX final publication requires hard links and has not been run on a real macOS/Linux host.",
+    "No automatic retries or persistent queue; multi-GB endurance and real customer willingness to pay remain unverified."
   ],
-  "status": "implemented, installed locally, and pushed to a public GitHub repository; plugin validator, MCP handshake, tool listing, 1 MiB local HTTP download, and Unicode destination checks passed",
+  "status": "0.2.0 installed locally through Codex CLI; duplicate legacy registration removed; 28 Windows regression tests and skill validation passed; GitHub fix-branch publication pending",
+  "validation": {
+    "regression_tests": 28,
+    "largest_fixture_bytes": 33554432,
+    "host": "Windows",
+    "legacy_reproduction": "0.1.0 reported completed for a 110000-byte file whose content differed from the server file"
+  },
+  "product_assessment": "Worth sharing as a focused free community utility; standalone paid demand is unproven. Consider optional setup or workflow customization services after real-user validation.",
   "success_criteria": [
     "Plugin package passes the Codex plugin validator.",
-    "MCP server responds to initialize, tools/list, and both tool calls.",
-    "Local marketplace can load the plugin in Codex."
+    "Real MCP stdio calls complete a download and support listing and cancellation.",
+    "Regression tests verify changed content, truncation, concurrency, final-file races, checksums and cancellation.",
+    "Local marketplace can load the updated plugin and the fix branch is pushed for review."
   ]
 }
