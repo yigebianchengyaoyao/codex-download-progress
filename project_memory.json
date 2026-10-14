@@ -33,7 +33,7 @@
     "POSIX final publication requires hard links and has not been run on a real macOS/Linux host.",
     "No automatic retries or persistent queue; multi-GB endurance and real customer willingness to pay remain unverified."
   ],
-  "status": "0.2.0 installed locally; duplicate legacy registration removed; 28 Windows regression tests, installed-source comparison, 2 MiB installed-MCP download, skill/format/ZIP checks passed; GitHub fix branch pushed and PR 1 open, main remains 0.1.0 until merge",
+  "status": "0.2.0 validated, packaged and installed locally; duplicate legacy registration removed; 28 Windows regression tests, installed-source comparison, 2 MiB installed-MCP download and skill/format/ZIP checks passed; PR 1 is the GitHub integration record",
   "validation": {
     "regression_tests": 28,
     "largest_fixture_bytes": 33554432,
