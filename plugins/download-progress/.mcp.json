@@ -10,7 +10,9 @@
       "default_tools_approval_mode": "prompt",
       "tools": {
         "start_download": {"approval_mode": "prompt"},
-        "get_download_progress": {"approval_mode": "approve"}
+        "get_download_progress": {"approval_mode": "approve"},
+        "list_downloads": {"approval_mode": "approve"},
+        "cancel_download": {"approval_mode": "approve"}
       }
     }
   }
