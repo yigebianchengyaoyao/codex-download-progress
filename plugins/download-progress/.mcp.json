@@ -12,7 +12,12 @@
         "start_download": {"approval_mode": "prompt"},
         "get_download_progress": {"approval_mode": "approve"},
         "list_downloads": {"approval_mode": "approve"},
-        "cancel_download": {"approval_mode": "approve"}
+        "cancel_download": {"approval_mode": "approve"},
+        "start_download_batch": {"approval_mode": "prompt"},
+        "get_batch_progress": {"approval_mode": "approve"},
+        "cancel_download_batch": {"approval_mode": "approve"},
+        "get_batch_receipt": {"approval_mode": "approve"},
+        "open_download_workbench": {"approval_mode": "prompt"}
       }
     }
   }

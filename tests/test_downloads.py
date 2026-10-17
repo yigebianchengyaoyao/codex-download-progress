@@ -471,8 +471,8 @@ class ProtocolTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         responses = [json.loads(line) for line in result.stdout.splitlines()]
-        self.assertEqual(responses[0]["result"]["serverInfo"]["version"], "0.2.0")
-        self.assertEqual(len(responses[1]["result"]["tools"]), 4)
+        self.assertEqual(responses[0]["result"]["serverInfo"]["version"], "0.3.0")
+        self.assertEqual(len(responses[1]["result"]["tools"]), 9)
 
 
 if __name__ == "__main__":

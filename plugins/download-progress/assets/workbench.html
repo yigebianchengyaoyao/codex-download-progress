@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>下载工作台</title>
+  <link rel="stylesheet" href="/workbench.css">
+  <script src="/workbench.js" defer></script>
+</head>
+<body>
+<!-- THESIS: Make real transfers legible as a file ledger.
+OWN-WORLD: Warm paper, charcoal ink, sage actions, tabular numbers.
+STORY: Paste links, choose a folder, follow the queue, keep a receipt.
+FIRST VIEWPORT: A narrow input desk beside a generous transfer ledger.
+FORM: Operate mode, receipt workspace, candidate 5, seed 28405cf9. -->
+<header class="masthead">
+  <a class="brand" href="/">下载工作台<span>DOWNLOAD PROGRESS / 0.3</span></a>
+  <div class="connection"><span id="connection">正在连接本机…</span><button id="quit" class="quiet">退出服务</button></div>
+</header>
+<main>
+  <div class="intro"><p class="eyebrow">把链接交给队列</p><h1>下载有进度，文件有去处。</h1><p>批量直链下载 · 自动分类 · 真实结果回执</p></div>
+  <p id="notice" class="notice" role="status" hidden></p>
+  <div class="workspace">
+    <section class="desk" aria-labelledby="new-heading">
+      <div class="section-heading"><h2 id="new-heading">新建清单</h2><span>01 / INPUT</span></div>
+      <form id="batch-form">
+        <label for="preset">场景模板</label><select id="preset"><option>我的下载清单</option><option>课程资料整理</option><option>创作素材收集</option><option>模型文件下载</option></select>
+        <label for="title">清单名称</label><input id="title" maxlength="80" value="我的下载清单" required>
+        <div class="label-row"><label for="urls">文件直链</label><label class="import" for="import-file">导入 TXT</label><input id="import-file" type="file" accept=".txt,text/plain" hidden></div>
+        <textarea id="urls" rows="7" placeholder="每行一个 http:// 或 https:// 文件链接，最多 50 个" required></textarea>
+        <p class="hint">相同链接自动去重。网页、网盘分享页和需要登录的链接通常无法直接下载。</p>
+        <label for="directory">保存到绝对路径</label><input id="directory" placeholder="例如 E:\下载\我的资料" required>
+        <label class="check"><input id="organize" type="checkbox" checked>按文档、图片、视频等分类存放</label>
+        <button class="primary" id="start" type="submit">开始批量下载 <span aria-hidden="true">↗</span></button>
+      </form>
+      <div class="demo"><strong>先体验，再放入自己的链接。</strong><p>生成 3 个本机示例文件，真实下载并标注“演示”。</p><button id="demo">运行本机演示</button></div>
+      <p class="footnote">数据仅保存在本机；文件请求会发送到你提供的下载地址。队列历史在服务退出后清空，文件保留。</p>
+    </section>
+    <section class="ledger" aria-labelledby="queue-heading">
+      <div class="section-heading"><h2 id="queue-heading">下载清单</h2><span>02 / TRANSFER</span></div>
+      <label class="sr-only" for="batches">选择清单</label><select id="batches" hidden></select>
+      <div id="empty" class="empty"><div class="paper-icon" aria-hidden="true">↓</div><h3>第一份清单，从这里开始</h3><p>粘贴链接，或运行左侧的本机演示。<br>进度会自动刷新，无需反复向 AI 询问。</p></div>
+      <div id="batch-detail" hidden>
+        <div class="batch-top"><div><span id="badge" class="badge" hidden>本机演示</span><h3 id="batch-title"></h3><p id="summary"></p></div><button id="cancel" class="quiet">取消剩余任务</button></div>
+        <div id="jobs" class="jobs"></div>
+        <div class="receipt-actions"><button id="folder">打开文件夹</button><button id="csv">导出 CSV 回执</button><button id="poster" class="primary">生成分享图</button></div>
+        <p class="hint">分享图默认隐藏文件名、链接和本地路径。CSV 包含文件名，请自行确认后分享。</p>
+        <section id="poster-preview" hidden aria-label="分享图预览"><div class="section-heading"><h3>这次下载的真实记录</h3><button id="save-poster">保存 PNG</button></div><canvas id="share-canvas" width="1080" height="1440"></canvas></section>
+      </div>
+      <details id="single-tasks" hidden><summary>本次 Codex 会话的其他下载</summary><div id="single-list"></div></details>
+    </section>
+  </div>
+</main>
+<footer>LOCAL FIRST <span>最多 4 个同时下载 · 每批 50 个链接 · MIT 开源</span></footer>
+</body>
+</html>

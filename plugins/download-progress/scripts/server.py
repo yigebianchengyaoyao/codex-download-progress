@@ -7,11 +7,15 @@ import json
 import sys
 
 from downloader import DownloadManager
+from batches import BatchQueue
+from workbench_http import WorkbenchServer
 
 
 PROTOCOL_VERSION = "2025-06-18"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 manager = DownloadManager()
+batches = BatchQueue(manager)
+panel = None
 
 
 def tool(name, description, properties, required, read_only=False):
@@ -29,7 +33,7 @@ def tool(name, description, properties, required, read_only=False):
             "readOnlyHint": read_only,
             "destructiveHint": False,
             "idempotentHint": read_only,
-            "openWorldHint": name == "start_download",
+            "openWorldHint": name in ("start_download", "start_download_batch"),
         },
     }
 
@@ -88,6 +92,62 @@ TOOLS = [
     ),
 ]
 
+BATCH_ID = {"batch_id": {"type": "string"}}
+TOOLS.extend(
+    [
+        tool(
+            "start_download_batch",
+            "Queue 1-50 HTTP/HTTPS file URLs with deduplication and optional category folders. Existing files are skipped without content verification.",
+            {
+                "urls": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 1,
+                    "maxItems": 50,
+                },
+                "directory": {
+                    "type": "string",
+                    "description": "Absolute output directory.",
+                },
+                "title": {"type": "string"},
+                "organize": {"type": "boolean"},
+            },
+            ["urls", "directory"],
+        ),
+        tool(
+            "get_batch_progress",
+            "Get batch progress and separate success, failure, skipped and cancelled counts.",
+            BATCH_ID,
+            ["batch_id"],
+            True,
+        ),
+        tool(
+            "cancel_download_batch",
+            "Cancel queued and running jobs in a batch, retaining partial files.",
+            BATCH_ID,
+            ["batch_id"],
+        ),
+        tool(
+            "get_batch_receipt",
+            "Get a receipt without URLs or absolute paths. Filenames remain private data.",
+            BATCH_ID,
+            ["batch_id"],
+            True,
+        ),
+        tool(
+            "open_download_workbench",
+            "Start an authenticated local visual workbench. Return its private URL for the user to open; do not share this URL publicly.",
+            {
+                "directory": {
+                    "type": "string",
+                    "description": "Optional absolute default download folder.",
+                }
+            },
+            [],
+        ),
+    ]
+)
+
 
 def text_result(value):
     return {
@@ -103,6 +163,7 @@ class ProtocolError(Exception):
 
 
 def handle(request):
+    global panel
     method = request["method"]
     params = request.get("params", {})
     if not isinstance(params, dict):
@@ -141,8 +202,26 @@ def handle(request):
             value = manager.get(args["download_id"], args.get("wait_seconds", 0))
         elif name == "cancel_download":
             value = manager.cancel(args["download_id"])
-        else:
+        elif name == "list_downloads":
             value = manager.list()
+        elif name == "start_download_batch":
+            value = batches.start(**args)
+        elif name == "get_batch_progress":
+            value = batches.get(args["batch_id"])
+        elif name == "cancel_download_batch":
+            value = batches.cancel(args["batch_id"])
+        elif name == "get_batch_receipt":
+            value = batches.receipt(args["batch_id"])
+        else:
+            if panel is None or panel.closed.is_set():
+                panel = WorkbenchServer(manager, batches, args.get("directory"))
+                value = panel.start()
+            else:
+                value = {
+                    "url": panel.url,
+                    "directory": panel.directory,
+                    "version": VERSION,
+                }
         return text_result(value)
     except Exception as exc:
         return {"isError": True, **text_result({"error": str(exc)})}
@@ -210,6 +289,9 @@ def main():
                     flush=True,
                 )
     finally:
+        if panel is not None:
+            panel.close()
+        batches.close()
         manager.close()
 
 
