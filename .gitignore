@@ -3,3 +3,7 @@ __pycache__/
 downloads/
 *.part
 *.part.json
+build/
+*.spec
+dist/*.exe
+dist/*delivery*.zip

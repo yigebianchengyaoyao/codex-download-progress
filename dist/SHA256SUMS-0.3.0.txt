@@ -1,0 +1,3 @@
+6d257a20d75fe828b8927b37a4659c3ae5d6f29669df14352d27e97d0ec1e49d  download-progress-0.3.0.zip
+dfa8390384b40cb93ca655c4a2d9efa29b56ea524180044aafe84192518f8c60  download-workbench-delivery-0.3.0.zip
+531b83a2e42a6be8bc68b468217f26aabba0d327706261318a882da87feb57e4  DownloadWorkbench-0.3.0.exe

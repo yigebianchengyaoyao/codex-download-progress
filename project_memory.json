@@ -1,9 +1,11 @@
 {
   "project": "Codex Download Progress plugin",
-  "updated_at": "2026-10-14",
-  "version": "0.2.0",
-  "development_branch": "fix/download-reliability",
-  "pull_request": "https://github.com/yigebianchengyaoyao/codex-download-progress/pull/1",
+  "updated_at": "2026-10-17",
+  "version": "0.3.0",
+  "development_branch": "feature/download-workbench",
+  "pull_request": "https://github.com/yigebianchengyaoyao/codex-download-progress/pull/2",
+  "release_url": "https://github.com/yigebianchengyaoyao/codex-download-progress/releases/tag/v0.3.0",
+  "local_installed_version": "0.3.0",
   "published_repository": "https://github.com/yigebianchengyaoyao/codex-download-progress",
   "goal": "Let Codex download a file from a URL and keep the user informed with live progress during that plugin-managed download.",
   "requirements": [
@@ -15,14 +17,21 @@
     "Do not overwrite existing destination files.",
     "Keep runtime dependencies limited to Python standard library.",
     "Support cancellation, optional expected SHA-256, bounded concurrency, and no overwrite at final publication.",
-    "Assess practical product value, distribution, and small-scale monetization honestly."
+    "Assess practical product value, distribution, and small-scale monetization honestly.",
+    "Build a novice-friendly standalone visual workbench with batch deduplication, queueing and category folders.",
+    "Provide privacy-safe receipts/posters and a clearly labelled local demo for short-video demonstrations.",
+    "Prepare a low-price delivery/service experiment without inventing sales or payment capability."
   ],
   "features": [
     "MCP tools: start_download, get_download_progress, cancel_download, list_downloads.",
     "Waited polling and concise conversation updates without unchanged-status spam.",
     "Strong ETag resume, cross-process destination locks, and no-overwrite publication.",
     "Optional SHA-256 validation, terminal failure states, frozen terminal speed, and redacted URL queries.",
-    "Four active transfers and 100 session-local history entries."
+    "Four active transfers and 100 session-local history entries.",
+    "Standalone authenticated local workbench; Windows x64 one-file executable.",
+    "Up to 50 links per batch, deduplication, category folders, safe skip and cancellation.",
+    "Private CSV receipts, filename-free share posters and explicitly labelled own-file demos.",
+    "Nine MCP tools; quickstart, scenario templates and social marketing drafts."
   ],
   "known_limitations": [
     "The plugin can track only transfers started through its own MCP tool, not downloads performed by other tools, package managers, or the operating system.",
@@ -33,16 +42,18 @@
     "POSIX final publication requires hard links and has not been run on a real macOS/Linux host.",
     "No automatic retries or persistent queue; multi-GB endurance and real customer willingness to pay remain unverified."
   ],
-  "status": "0.2.0 validated, packaged and installed locally; duplicate legacy registration removed; 28 Windows regression tests, installed-source comparison, 2 MiB installed-MCP download and skill/format/ZIP checks passed; PR 1 is the GitHub integration record",
+  "status": "0.3.0 implemented and verified; installed locally with nine MCP tools. User confirmed low-price delivery pack plus optional setup assistance; no checkout or social store configured.",
   "validation": {
-    "regression_tests": 28,
+    "regression_tests": 39,
+    "frozen_windows_executable": "Startup, bundled assets, three actual demo downloads, valid ZIP, CSV and clean shutdown verified on Windows 11 x64",
+    "ui_validation": "Desktop browser demo and poster rendering checked; mobile breakpoint implemented but not tested on a real phone",
     "largest_fixture_bytes": 33554432,
     "host": "Windows",
     "legacy_reproduction": "0.1.0 reported completed for a 110000-byte file whose content differed from the server file"
   },
   "product_assessment": "Worth sharing as a focused free community utility; standalone paid demand is unproven. Consider optional setup or workflow customization services after real-user validation.",
   "success_criteria": [
-    "Plugin package passes the Codex plugin validator.",
+    "Plugin package loads through the installed Codex CLI.",
     "Real MCP stdio calls complete a download and support listing and cancellation.",
     "Regression tests verify changed content, truncation, concurrency, final-file races, checksums and cancellation.",
     "Local marketplace can load the updated plugin and the fix branch is pushed for review."

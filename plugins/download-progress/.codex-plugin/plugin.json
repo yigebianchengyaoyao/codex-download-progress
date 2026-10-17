@@ -1,6 +1,6 @@
 {
   "name": "download-progress",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Download files from URLs with resumable downloads and progress updates available to Codex during the task.",
   "author": {
     "name": "Local developer"
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Download Progress",
     "shortDescription": "Download files and track progress in Codex.",
-    "longDescription": "Download to an explicit folder, check progress, cancel tasks, safely resume using strong ETags, and optionally verify SHA-256.",
+    "longDescription": "Download individual files or batches, view live progress in a local workbench, organize category folders, and export receipts. Safely resume using strong ETags and optionally verify SHA-256.",
     "developerName": "Download Progress community plugin",
     "category": "Productivity",
     "capabilities": [],
