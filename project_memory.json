@@ -3,7 +3,9 @@
   "updated_at": "2026-10-17",
   "version": "0.3.0",
   "development_branch": "feature/download-workbench",
-  "pull_request": "https://github.com/yigebianchengyaoyao/codex-download-progress/pull/1",
+  "pull_request": "https://github.com/yigebianchengyaoyao/codex-download-progress/pull/2",
+  "release_url": "https://github.com/yigebianchengyaoyao/codex-download-progress/releases/tag/v0.3.0",
+  "local_installed_version": "0.3.0",
   "published_repository": "https://github.com/yigebianchengyaoyao/codex-download-progress",
   "goal": "Let Codex download a file from a URL and keep the user informed with live progress during that plugin-managed download.",
   "requirements": [
@@ -40,7 +42,7 @@
     "POSIX final publication requires hard links and has not been run on a real macOS/Linux host.",
     "No automatic retries or persistent queue; multi-GB endurance and real customer willingness to pay remain unverified."
   ],
-  "status": "0.3.0 implemented and locally verified; preparing GitHub release and local plugin upgrade. User confirmed low-price delivery pack plus optional setup assistance; no checkout or social store configured.",
+  "status": "0.3.0 implemented and verified; installed locally with nine MCP tools. User confirmed low-price delivery pack plus optional setup assistance; no checkout or social store configured.",
   "validation": {
     "regression_tests": 39,
     "frozen_windows_executable": "Startup, bundled assets, three actual demo downloads, valid ZIP, CSV and clean shutdown verified on Windows 11 x64",
